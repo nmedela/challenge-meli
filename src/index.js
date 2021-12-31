@@ -1,12 +1,19 @@
 const DNAEXAMPLE = ['AAAAT', 'TTTTT', 'CCTAC', 'GGGTG', 'GGGAT']
 const DNAEXAMPLE2 = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG"];
-const DNAEXAMPLE3 = ["ATGCGAT",
-                     "AAGTGCT",
-                     "TAATGTC", 
-                     "GAATGGG", 
-                     "CCGATAA", 
-                     "TCACTGT",
-                     "TCACTGT"];
+const DNAEXAMPLE3 = ["ATGTGAG",
+                     "AAGCGGT",
+                     "AACTGTC", 
+                     "ACATGGG", 
+                     "CCTATGA", 
+                     "TTACGTT",
+                     "TCAGTGT"];
+const DNAEXAMPLE4 = ["AAAAAAA",
+                     "AAAAAAA",
+                     "AAAAAAA", 
+                     "AAAAAAA", 
+                     "AAAAAAA", 
+                     "AAAAAAA",
+                     "AAAAAAA"];
 const NMIN = 4
 const OCURRENCES = 4
 const stringValid = ['A', 'T', 'C', 'G']
@@ -89,7 +96,8 @@ function dnaMatch(dna, n, nOcurrences) {
     matchs = searchOcurrencesRC(dna, n, nOcurrences, matchs, compareColumn)
     console.log(matchs)
     // if (matchs > 1) return true
-    matchs = compareDiagonal(dna, n, nOcurrences, matchs, compareColumn)
+    matchs = compareDiagonalUpToDown(dna, n, nOcurrences, matchs, false)
+    matchs = compareDiagonal(dna, n, nOcurrences, matchs, true)
     console.log(matchs)
     if (matchs > 1) return true
     return false
@@ -128,10 +136,10 @@ const compareColumn = (dna, column, row, nextRow) => {
 }
 
 //buscar por diagonal
-function compareDiagonal(dna, n, nOcurrences, matchs, compareBy) {
-    var hasta=n-nOcurrences  
+function compareDiagonalUpToDown(dna, n, nOcurrences, matchs, leftToRight) {
+    // var limit=n-nOcurrences  
     //diagonal superior
-    for (let r = 0; r <=hasta; r++) {
+    for (let r = 0; r <=n-nOcurrences; r++) {
         // var c=r
         var j=0
             var f= r
@@ -154,14 +162,14 @@ function compareDiagonal(dna, n, nOcurrences, matchs, compareBy) {
     console.log('hay ', matchs)
 
     //diagonal inferior
-    for (let r = 0; r <hasta; r++) {
+    for (let r = 0; r <n-nOcurrences; r++) {
         var j=r+1
         var f=0
         while(f+nOcurrences <= n-r-1){    
             var ocurrences = 1
             var i = f + 1 
             var h=j+1 
-            while (f < r + nOcurrences &&  dna[j][f] == dna[h][i] ) {
+            while (i <  nOcurrences &&  dna[j][f] == dna[h][i] ) {
                 ocurrences++
                 i++
                 h++
@@ -178,9 +186,66 @@ function compareDiagonal(dna, n, nOcurrences, matchs, compareBy) {
     console.log('hay ', matchs)
     return matchs
     }
+function compareDiagonal(dna, n, nOcurrences, matchs, leftToRight) {
+        // var limit=n-nOcurrences  
+        //diagonal superior
+        for (let r = 0; r <=n-nOcurrences; r++) {
+            // var c=r
+            var j=0
+                var f=n-r-1
+                while(f-nOcurrences+1>=0){
+                var ocurrences = 1
+                var i = f - 1 
+                 var h=j+1  
+                 console.log('recorro ', j,' ', f,' ',dna[j][f] ,' con el siguiente ', h,' ',i,' ',dna[h][i])
+                while (i > f-nOcurrences &&  dna[j][f] == dna[h][i] ) {
+                    ocurrences++
+                    console.log('entra ',ocurrences)
+                    i--
+                    h++
+                }
+                if (ocurrences == nOcurrences) {
+                    console.log('Hay match')
+                    matchs++
+                }
+                f=i;
+                j=h
+            }
+        }
+        console.log('hay ', matchs)
     
-    isMutant(DNAEXAMPLE2)
-    //  00 01 02 03 04
+        //diagonal inferior
+        for (let r = 0; r <n-nOcurrences; r++) {
+            var j=r+1
+            var f=n-1
+            while(f-nOcurrences+1>0){    
+                var ocurrences = 1
+                var i = f - 1 
+                var h=j+1 
+                console.log('recorro ', j,' ', f,' ',dna[j][f] ,' con el siguiente ', h,' ',i,' ',dna[h][i])
+                while ( i> f-nOcurrences &&  dna[j][f] == dna[h][i] ) {
+                    ocurrences++
+                    console.log('entra ',ocurrences)
+                    i--
+                    h++
+                }
+                if (ocurrences == nOcurrences) {
+                    console.log('Ocurrencias igual a ', ocurrences, ' en ', j, ' ', f)
+                    matchs++
+                }
+                f=i;
+                j=h
+            }
+            
+        }
+        console.log('hay ', matchs)
+        return matchs
+    }
+    
+        
+    isMutant(DNAEXAMPLE4)
+
+    //  00 01 02 03 04          
     //     11 12 13 14
     //        22 23 24
     //           33 34
@@ -190,7 +255,30 @@ function compareDiagonal(dna, n, nOcurrences, matchs, compareBy) {
     //  30 31 32 
     //  40 41 42 43 
      
+    
+
+    //  00 01 02 03 04          
+    //  10 11 12 13 
+    //  20 21 22 
+    //  30 31 
+    //  40 
+    //               14
+    //            23 24
+    //         32 33 34
+    //      41 42 43 44
+    
+    // 04 13 22 31 40
+    // 03 12 21 30
+    // 02 11 20
+    // 01 10
+    // 00
+    // 14 23 32 41
+    // 24 33 42 
+    // 34 43 
+    // 44
+
     // 2 * (n - nOcurrences) + 1 <- Cantidad de iteraciones
+
     // 4 - 4 0-> 1
     // 5 - 4  1-> 3
     // 6 - 4 2-> 5
@@ -198,3 +286,4 @@ function compareDiagonal(dna, n, nOcurrences, matchs, compareBy) {
     // 8 4 4->9
     // 9->11
     // 10->13
+    
