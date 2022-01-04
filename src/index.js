@@ -1,10 +1,9 @@
 
 require('./repositories/connection')
 const express = require('express')
-const PORT=4000
+const { config } = require('../config/config')
+const PORT= config[config.environment].server.connection.port
 const app = express()
-
-
 
 app.use('/',require('./routes/index.js'))
 app.listen(PORT,()=>{

@@ -4,7 +4,7 @@ const router = express.Router()
 const { isMutant } = require('../domain/dna')
 const {dnaService} = require('./../services/dnaService')
 
-router.get('/', async (req, res, next) => {
+router.get('/stats', async (req, res, next) => {
 console.log('entre a mutant')
     try {
         await dnaService.getAll(async (err, data)=>{

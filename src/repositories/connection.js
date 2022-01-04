@@ -1,12 +1,10 @@
 const mysql = require('mysql')
+const {config}= require('./../../config/config')
+const environment=config.environment
 
-var con = mysql.createConnection({
-    host: "35.232.94.192",
-    // port:3306,
-    user: "root",
-    password: "12345678",
-    database: "challenge_mutant"
-  });
+var con = mysql.createConnection(
+  config[environment].db.connection
+  );
   
   con.connect(function(err) {
     if (err) throw err;
