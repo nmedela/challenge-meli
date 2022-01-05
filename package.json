@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config ./jest.config.js",
+    "test:watch": "jest --watch --verbose",
+    "test:coverage": "jest --coverage",
+    "test:verbose": "jest --verbose"
   },
   "repository": {
     "type": "git",
@@ -22,5 +25,9 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "jest": "^27.4.6",
+    "supertest": "^6.1.6"
   }
 }
