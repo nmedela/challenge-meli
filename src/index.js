@@ -6,6 +6,8 @@ const PORT= config[config.environment].server.connection.port
 const app = express()
 
 app.use('/',require('./routes/index.js'))
+
+//Se inicializa el server
 app.listen(PORT,()=>{
     console.log(`Server up & running on ${PORT}`)
 })

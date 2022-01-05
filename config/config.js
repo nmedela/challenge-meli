@@ -25,16 +25,15 @@ const config = {
     production: {
         db: {
             connection: {
-                // host: process.env.DB_HOST,
-                user: 'root',//process.env.DB_USER,
-                password: 12345678,//process.env.DB_PASSWORD,
-                database: 'challenge_mutant',//process.env.DB_NAME,
-                host: `/cloudsql/challenge-meli-336819:us-central1:challenge-meli`
+                host: process.env.DB_HOST,
+                user: process.env.DB_USER,//process.env.DB_USER,
+                password: process.env.DB_PASSWORD,//process.env.DB_PASSWORD,
+                database: process.env.DB_NAME,//process.env.DB_NAME,
             },
         },
         server: {
             connection: {
-                port: 8080//process.env.SERVER_PORT
+                port: process.env.SERVER_PORT//process.env.SERVER_PORT
             }
         }
     }
