@@ -83,15 +83,11 @@ _Luego para ejecutar_
 ```
 npm start
 ```
-_Ejecutar test_
 
-```
-npm run test
-```
 
 ## Modo de uso
 
-URL
+URL de la api
 _https://challenge-meli-336819.ue.r.appspot.com_
 
 Se puede acceder desde una aplicacion que permita pruebas de api Ej: postman
@@ -116,5 +112,5 @@ Creando una petición get https://challenge-meli-336819.ue.r.appspot.com/stats s
 
 ## Autor ✒️
 
-* **Nicolas Medela** - *Trabajo Inicial* - [nmedela](https://github.com/nmedela)
+* **Nicolas Medela** - [nmedela](https://github.com/nmedela)
 
