@@ -100,6 +100,7 @@ Se crea una petición post https://challenge-meli-336819.ue.r.appspot.com/mutant
 ```
 
 En este caso se obtendrá un status 200-ok ya que es un adn mutante
+En caso de enviar un adn humano, el status será 403-forbidden
 
 Creando una petición get https://challenge-meli-336819.ue.r.appspot.com/stats se obtendrá la cantidad de adn's evaluados de mutantes y humanos, junto con el ratio
 ```

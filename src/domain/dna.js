@@ -84,11 +84,9 @@ function searchOcurrencesRC(dna, matchs, compareBy) {
                 i++ //paso a la siguiente posicion
             }
             if (ocurrences == NOCURRENCES) { //chequeo si las ocurrencias encontradas son igual al total que se pide
-                console.log('Ocurrencias igual a ', ocurrences, ' en ', r, ' ', c)
                 matchs++ // Agrego que encontré una secuencia del total pedido de caracteres juntos
             }
             if (matchs > 1) { //si la cantidad de secuencias encontradas es mayor a 1, salgo del ciclo
-                console.log('Detecto ', matchs, ' matchs')
                 return matchs
             }
             c = i //Si no supera a 1 salto a la primera posicion siguiente que se encontró un caracter distinto
@@ -138,7 +136,6 @@ function compareDiagonalUpToDownLeftToRight(dna,matchs) {
                 matchs++
             }
             if (matchs > 1) {//si las secuencias encontradas es mayor a uno retorno
-                console.log('Detecto ', matchs, ' matchs')
                 return matchs
             }
             f=i;// cambio a la posicion de la columna del primer caracter distinto en la misma diagonal
@@ -172,11 +169,9 @@ function compareDiagonalUpToDownLeftToRight(dna,matchs) {
             }
 
             if (ocurrences == NOCURRENCES) { //si las ocurrencias encontradas es igual al total requerido, aumento la cantidad de secuencias encontradas
-                console.log('Ocurrencias igual a ', ocurrences, ' en ', j, ' ', f)
                 matchs++
             }
             if (matchs > 1) { //retorno la cantidad de secuencias encontradas si es mayor a 1
-                console.log('Detecto ', matchs, ' matchs')
                 return matchs
             }
 
@@ -186,7 +181,6 @@ function compareDiagonalUpToDownLeftToRight(dna,matchs) {
         }
         
     }
-    console.log('hay ', matchs)
     return matchs
     }
 
@@ -209,20 +203,16 @@ function compareDiagonalUpToDownRightToLeft(dna,matchs) {
                 var ocurrences = 1 // agrego una ocurrencia por el primer caracter
                 var i = f - 1 // pivot de columna que va disminuyendo hacia la subsiguiente a evaluar (hacia atras)
                 var h=j+1  // pivot de fila siguiente
-                console.log('recorro ', j,' ', f,' ',dna[j][f] ,' con el siguiente ', h,' ',i,' ',dna[h][i])
                 //Se comparará con el subsiguiente caracter mientras la posicion de dicho pivot sea mayor a a del caracter de referencia menos el total de ocurrencias requeridas
                 while (i > f-NOCURRENCES &&  dna[j][f] == dna[h][i] ) {
                     ocurrences++ //si compara y son iguales, agrega una ocurrencia
-                    console.log('entra ',ocurrences)
                     i-- //disminuye el pivot de columna para que se pueda evaluar la subsiguiente en la misma diagonal
                     h++ //incremento el pivot de fila de la misma diagonal
                 }
                 if (ocurrences == NOCURRENCES) { //si es igual a lo requerido aumento la cantidad de secuencias encontradas
-                    console.log('Hay match')
                     matchs++
                 }
                 if (matchs > 1) { //si las secuencias encontradas es mayor a 1 retorno la cantidad
-                    console.log('Detecto ', matchs, ' matchs')
                     return matchs
                 }
 
@@ -230,7 +220,6 @@ function compareDiagonalUpToDownRightToLeft(dna,matchs) {
                 j=h // cambio la posicion de fila de caracter de referencia para continuar en la misma diagonal
             }
         }
-        console.log('hay ', matchs)
     
         //diagonal inferior
         // 
@@ -249,20 +238,16 @@ function compareDiagonalUpToDownRightToLeft(dna,matchs) {
                 var ocurrences = 1  //Agrego una ocurrencia por ser el caracter de referencia
                 var i = f - 1 // pivot de columna subsiguiente, que disminuye
                 var h=j+1 // pivot de fila que va aumentando sobre la misma diagonal
-                console.log('recorro ', j,' ', f,' ',dna[j][f] ,' con el siguiente ', h,' ',i,' ',dna[h][i])
                 //comparará el subsiguiente si la posición del pivot de columna siguiente es mayor a la posicion de la columna de caracter de referencia - el total de ocurrencias requeridas 
                 while ( i> f-NOCURRENCES &&  dna[j][f] == dna[h][i] ) {
                     ocurrences++ //si hay concidencia aumenta la cantidad
-                    console.log('entra ',ocurrences)
                     i-- //disminuye la columna pivot subsiguiente para evaluar sobre la misma diagonal con el caracter de referencia
                     h++ //aumenta la fila para comparar con el caracter subsiguiente sobre la misma diagonal
                 }
                 if (ocurrences == NOCURRENCES) { //si las ocurrencias coinciden con lo requerido, aumenta el valor de las secuencias encontradas
-                    console.log('Ocurrencias igual a ', ocurrences, ' en ', j, ' ', f)
                     matchs++
                 }
                 if (matchs > 1) { //si las secuencias encontradas es mayor a uno retorno el valor
-                    console.log('Detecto ', matchs, ' matchs')
                     return matchs
                 }
                 f=i; //cambio la posicion de la columna de caracter de referencia al primero distinto encontrado, sobre la misma diagonal 
@@ -270,7 +255,6 @@ function compareDiagonalUpToDownRightToLeft(dna,matchs) {
             }
             
         }
-        console.log('hay ', matchs)
         return matchs
     }
 
