@@ -6,6 +6,7 @@ El metodo debe devolver true o false si detecta más de una secuencia de 4 letra
 En casos como, por ejemplo una fila, donde existan 5 o mas caracteres iguales se tomará la primera secuencia que encuentre de 4 
 EJ:  ["AAAAAATG"] -> secuencia encontrada AAAA <-Match  luego el recorrido continuarpa chequeando al resto AATG <- No match
 No se tomará en cuenta las siguientes coincidencias A "AAAA" ATG y AA "AAAA" TG estas no contarán como match
+Pero si se encuentra algo como esto "AAAAAAAA" si se considererá 2 matchs "AAAA" "AAAA"
 
 Debe ingresarse solo caracteres permitidos y en mayuscula, si no se retornará un error.
 La matriz debe cumplir el nxn con un n mayor o igual a la cantidad de caracteres iguales que tener para satisfacer la condicion de match, en este caso n sera mayor o igual a 4
