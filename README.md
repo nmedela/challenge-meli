@@ -88,7 +88,7 @@ npm start
 ## Modo de uso
 
 URL de la api
-_https://challenge-meli-336819.ue.r.appspot.com_
+_https://challenge-meli-336819.ue.r.appspot.com_ o localhost:[puerto]/ si es en instancia local 
 
 Se puede acceder desde una aplicacion que permita pruebas de api Ej: postman
 
