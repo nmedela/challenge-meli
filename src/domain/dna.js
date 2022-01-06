@@ -260,4 +260,15 @@ function compareDiagonalUpToDownRightToLeft(dna,matchs) {
 
     // 2 * (n - nOcurrences) + 1 <- Cantidad de iteraciones
 
-    module.exports={isMutant}
+    module.exports={
+        isMutant,
+        checkN,
+        checkStrings,
+        decomposeDNA,
+        dnaMatch,
+        checkNumberRows,
+        checkNumberColumn,
+        searchOcurrencesRC,
+        compareDiagonalUpToDownLeftToRight,
+        compareDiagonalUpToDownRightToLeft
+    }
