@@ -18,10 +18,9 @@ class DnaService {
     
     }
     checkMutant(dna){
-
         var dnaIsMutant= isMutant(dna)
-        // const dnaPlain= dna.join('')
-        // return await dnaRepository.create(dnaPlain)
+        const dnaPlain= dna.join('')
+         dnaRepository.create(dnaPlain)
         return dnaIsMutant
     }
 }

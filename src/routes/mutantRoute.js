@@ -23,8 +23,8 @@ router.post('/', async (req, res, next) => {
         if(!req.body.dna) throw Error("No existe información")
         res.status(dnaService.checkMutant(req.body.dna) ? 200 : 403).send()
     } catch (error) {
-        console.log(error)
-        res.status(422).json(error)
+        console.log(error.message)
+        res.status(422).json(error.message)
     }
 })
 

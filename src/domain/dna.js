@@ -243,8 +243,9 @@ function compareDiagonalUpToDownRightToLeft(dna,matchs) {
         for (let r = 0; r <n-NOCURRENCES; r++) {
             var j=r+1 //pivot de fila que comienza en la fila 1 y luego va aumentando
             var f=n-1 //pivot de columna que comienza siempre en n - 1
-            // se podrá seguir evaluando la diagonal mientras el caracter de referencia se le resta el total de ocurrencias requeridas + 1 sea mayor a 0
-            while(f-NOCURRENCES+1>0){    
+            // se podrá seguir evaluando la diagonal mientras la posicion de la fila del caracter de referencia sea menor o igual a N - total ocurrencias requeridas
+            // while(f-NOCURRENCES+1>0){    
+            while(j<=n-NOCURRENCES){    
                 var ocurrences = 1  //Agrego una ocurrencia por ser el caracter de referencia
                 var i = f - 1 // pivot de columna subsiguiente, que disminuye
                 var h=j+1 // pivot de fila que va aumentando sobre la misma diagonal
